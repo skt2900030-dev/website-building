@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Granthalaya – Every book, free to read, ready to own</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;800&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#F4F6F9;--surface:#fff;--ink:#101B2D;--muted:#5A6577;--line:#DDE3EC;--green:#0B7A63;--green-t:#DDF3EC;--amber:#B26A00;--amber-t:#FBEBD0;--navy:#14213D;--on-navy:#F4F6F9;
+--serif:"Spectral",Georgia,serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1422;--surface:#142036;--ink:#EAEFF7;--muted:#9AA8BD;--line:#26344D;--green:#46C9A9;--green-t:#12372F;--amber:#F0B04B;--amber-t:#3A2A0E;--navy:#0A101C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1422;--surface:#142036;--ink:#EAEFF7;--muted:#9AA8BD;--line:#26344D;--green:#46C9A9;--green-t:#12372F;--amber:#F0B04B;--amber-t:#3A2A0E;--navy:#0A101C;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font:800 24px var(--serif);letter-spacing:-.01em}
+.logo span{color:var(--green)}
+nav{display:flex;gap:6px;margin-left:auto}
+nav button{background:none;border:0;padding:8px 14px;border-radius:8px;color:var(--muted);font-weight:500}
+nav button[aria-current="page"]{background:var(--green-t);color:var(--green);font-weight:700}
+.cart{border:1px solid var(--line);background:none;color:var(--ink);padding:8px 14px;border-radius:8px;font-weight:700}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0}
+.hero{background:var(--navy);color:var(--on-navy);padding:56px 0 0;overflow:hidden}
+.hero h1{font-size:clamp(34px,6vw,62px);font-weight:800;max-width:15em;letter-spacing:-.02em}
+.hero p{max-width:34em;font-size:18px;color:#C3CCDA;margin:18px 0 28px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:13px 22px;font-weight:700;background:var(--green);color:#fff}
+.btn.alt{background:transparent;color:inherit;border:1px solid currentColor;margin-left:8px}
+.hero .btn{background:#46C9A9;color:#06231C}
+.shelf{display:flex;align-items:flex-end;gap:4px;margin-top:44px;padding:0 20px;overflow-x:auto;border-bottom:14px solid #2B1D12;scrollbar-width:none}
+.spine{flex:0 0 auto;width:46px;border:0;border-radius:3px 3px 0 0;color:#fff;font:600 13px var(--serif);writing-mode:vertical-rl;padding:14px 0;text-align:left;box-shadow:inset -5px 0 rgba(0,0,0,.18)}
+.spine:hover,.spine:focus-visible{transform:translateY(-12px);transition:transform .2s}
+@media (prefers-reduced-motion:reduce){.spine:hover{transition:none}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:36px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.stat b{font:800 30px var(--serif);display:block}
+.stat span{color:var(--muted);font-size:14px}
+section.block{padding:28px 0 44px}
+section.block h2{font-size:30px;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 22px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pane{border-radius:14px;padding:28px;border:1px solid var(--line);background:var(--surface)}
+.pane.g{border-top:5px solid var(--green)}
+.pane.a{border-top:5px solid var(--amber)}
+.pane h3{font-size:22px;margin-bottom:8px}
+.pane p{color:var(--muted);margin:0 0 16px}
+.pane ul{margin:0 0 18px;padding-left:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.cover{height:150px;padding:16px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--serif)}
+.cover b{font-size:19px;line-height:1.15}
+.cover i{font-size:13px;opacity:.9;font-style:normal}
+.meta{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.meta small{color:var(--muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px}
+.tag.pdf{background:var(--green-t);color:var(--green)}
+.tag.hc{background:var(--amber-t);color:var(--amber)}
+.acts{display:flex;gap:8px;margin-top:auto}
+.acts button{flex:1;border-radius:8px;padding:8px 6px;font-weight:700;font-size:14px;border:1px solid var(--line);background:none;color:var(--ink)}
+.acts .dl{background:var(--green-t);color:var(--green);border-color:transparent}
+.acts .buy{background:var(--amber-t);color:var(--amber);border-color:transparent}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.tools input,.tools select{font:inherit;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.tools input{flex:1;min-width:200px}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+footer{background:var(--navy);color:#C3CCDA;padding:30px 0;font-size:14px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9}
+#toast.on{opacity:1}
+[hidden]{display:none!important}
+@media(max-width:720px){.two,.stats{grid-template-columns:1fr}.bar{gap:8px}.logo{font-size:20px}nav button{padding:8px 8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="#home">Grantha<span>laya</span></a>
+  <nav aria-label="Main">
+    <button data-go="home">Home</button>
+    <button data-go="library">Library</button>
+  </nav>
+  <button class="cart" id="cart" aria-label="Cart">Cart (<span id="n">0</span>)</button>
+</div></header>
+
+<main>
+<!-- PAGE 1: HOME -->
+<div id="p-home">
+  <div class="hero"><div class="wrap">
+    <h1>Every book, free to read. Ready to own.</h1>
+    <p>Download any title as a PDF at no cost, or order the printed hardcopy and have it delivered to your door.</p>
+    <button class="btn" data-go="library">Browse the library</button>
+    <button class="btn alt" data-go="library" data-f="pdf">Free PDFs only</button>
+  </div>
+  <div class="shelf wrap" id="shelf" aria-label="Pick a book from the shelf"></div></div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>12,000+</b><span>Titles in the collection</span></div>
+      <div class="stat"><b>100% free</b><span>PDF downloads, no sign-up</span></div>
+      <div class="stat"><b>Pan-India</b><span>Hardcopy delivery in 3–6 days</span></div>
+    </div>
+    <section class="block">
+      <h2>Two ways to read</h2>
+      <p class="sub">Choose the format that suits you. Every title offers both.</p>
+      <div class="two">
+        <div class="pane g"><h3>Digital PDF</h3><p>Instant and free.</p>
+          <ul><li>Download in one tap</li><li>Read on phone, tablet or laptop</li><li>Keep it forever</li></ul>
+          <button class="btn" data-go="library" data-f="pdf">Find a PDF</button></div>
+        <div class="pane a"><h3>Printed hardcopy</h3><p>Clean prints, delivered.</p>
+          <ul><li>Paperback and hardbound editions</li><li>Cash on delivery available</li><li>Free shipping above ₹499</li></ul>
+          <button class="btn" style="background:var(--amber)" data-go="library" data-f="hc">Shop hardcopies</button></div>
+      </div>
+    </section>
+    <section class="block">
+      <h2>Popular this week</h2><p class="sub">Readers are downloading these most.</p>
+      <div class="grid" id="popular"></div>
+    </section>
+  </div>
+</div>
+
+<!-- PAGE 2: LIBRARY -->
+<div id="p-library" hidden><div class="wrap">
+  <section class="block">
+    <h2>The Library</h2>
+    <p class="sub">Search by title or author. Every book is free as a PDF and available in print.</p>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Search title or author" aria-label="Search">
+      <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+      <select id="fmt" aria-label="Format"><option value="">Any format</option><option value="pdf">Free PDF</option><option value="hc">Hardcopy</option></select>
+    </div>
+    <p class="sub" id="count"></p>
+    <div class="grid" id="grid"></div>
+  </section>
+</div></div>
+</main>
+
+<footer><div class="wrap">Granthalaya · Free knowledge, printed on request. Sample catalogue for demonstration; titles shown are public-domain works.</div></footer>
+<div id="toast" role="status"></div>
+
+<script>
+var B=[
+["Pride and Prejudice","Jane Austen","Fiction",299,"#7A2E4D"],
+["Gitanjali","Rabindranath Tagore","Poetry",199,"#1D5C7A"],
+["Arthashastra","Kautilya","Politics",549,"#6B4A1F"],
+["Meditations","Marcus Aurelius","Philosophy",249,"#2F5D3A"],
+["Hind Swaraj","M. K. Gandhi","History",149,"#8A4B14"],
+["On the Origin of Species","Charles Darwin","Science",449,"#3C4C8A"],
+["Relativity","Albert Einstein","Science",299,"#2B6E6A"],
+["Bhagavad Gita","Vyasa","Philosophy",199,"#9A3B2E"],
+["Frankenstein","Mary Shelley","Fiction",279,"#4A3A6B"],
+["Godaan","Premchand","Fiction",229,"#7A5A1A"],
+["The Wealth of Nations","Adam Smith","Economics",599,"#1F4E5F"],
+["Elements of Geometry","Euclid","Mathematics",399,"#5A3B52"]
+].map(function(b,i){return{id:i,t:b[0],a:b[1],c:b[2],p:b[3],k:b[4]}});
+var $=function(s){return document.querySelector(s)},cart=0,tm;
+function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){t.classList.remove("on")},2200)}
+function card(b){return '<article class="card"><div class="cover" style="background:'+b.k+'"><b>'+b.t+'</b><i>'+b.a+'</i></div><div class="meta"><div class="tags"><span class="tag pdf">Free PDF</span><span class="tag hc">Hardcopy</span></div><small>'+b.c+'</small><div class="acts"><button class="dl" data-dl="'+b.id+'">Download</button><button class="buy" data-buy="'+b.id+'">Buy ₹'+b.p+'</button></div></div></article>'}
+function draw(){
+  var q=$("#q").value.toLowerCase(),c=$("#cat").value,r=B.filter(function(b){return(!c||b.c===c)&&(b.t+b.a).toLowerCase().indexOf(q)>-1});
+  $("#grid").innerHTML=r.length?r.map(card).join(""):'<div class="empty">No books match. Try a different title, author or category.</div>';
+  $("#count").textContent=r.length+" of "+B.length+" titles";
+}
+function show(p,f){
+  ["home","library"].forEach(function(n){$("#p-"+n).hidden=n!==p});
+  document.querySelectorAll("nav button").forEach(function(b){b.toggleAttribute("aria-current",b.dataset.go===p);if(b.dataset.go===p)b.setAttribute("aria-current","page")});
+  if(f){$("#fmt").value=f}
+  window.scrollTo(0,0);
+  if(location.hash!=="#"+p)history.replaceState(null,"","#"+p);
+}
+$("#shelf").innerHTML=B.map(function(b,i){return '<button class="spine" style="background:'+b.k+';height:'+(130+(i*37%60))+'px" data-pick="'+b.t+'" aria-label="'+b.t+'">'+b.t+'</button>'}).join("");
+$("#popular").innerHTML=B.slice(0,4).map(card).join("");
+$("#cat").innerHTML+=B.map(function(b){return b.c}).filter(function(v,i,a){return a.indexOf(v)===i}).sort().map(function(c){return '<option>'+c+'</option>'}).join("");
+draw();
+document.addEventListener("click",function(e){
+  var t=e.target.closest("button,a");if(!t)return;
+  if(t.dataset.go){e.preventDefault();show(t.dataset.go,t.dataset.f)}
+  else if(t.dataset.pick){show("library");$("#q").value=t.dataset.pick;draw()}
+  else if(t.dataset.dl!==undefined)toast("Starting PDF download: "+B[t.dataset.dl].t);
+  else if(t.dataset.buy!==undefined){cart++;$("#n").textContent=cart;toast("Added to cart: "+B[t.dataset.buy].t)}
+  else if(t.id==="cart")toast(cart?cart+" hardcopy item(s) in your cart":"Your cart is empty. Add a hardcopy to start.");
+});
+["q","cat"].forEach(function(i){$("#"+i).addEventListener("input",draw)});
+$("#fmt").addEventListener("change",draw);
+addEventListener("hashchange",function(){show(location.hash==="#library"?"library":"home")});
+show(location.hash==="#library"?"library":"home");
+</script>
+</body>
+</html>
