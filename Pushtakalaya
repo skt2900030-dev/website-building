@@ -144,7 +144,7 @@ footer{background:var(--navy);color:#C3CCDA;padding:30px 0;font-size:14px}
 
 <script>
 var B=[
-["Pride and Prejudice","Jane Austen","Fiction",299,"#7A2E4D"],
+["ENGINEERING CHEMISTRY","Sumit Thakur","Science",299,"#7A2E4D"],
 ["Gitanjali","Rabindranath Tagore","Poetry",199,"#1D5C7A"],
 ["Arthashastra","Kautilya","Politics",549,"#6B4A1F"],
 ["Meditations","Marcus Aurelius","Philosophy",249,"#2F5D3A"],
